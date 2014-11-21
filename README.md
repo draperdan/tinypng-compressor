@@ -1,4 +1,4 @@
-tinypng-compresser
+tinypng-compressor
 ==================
 
 This is a command-line tool to compress a directory of png/jpg files using [TinyPNG](http://tinypng.com)'s compression API.

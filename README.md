@@ -13,7 +13,7 @@ Sign up for a free API key from [TinyPNG](https://tinypng.com/developers)
 
 Set the API key in `settings.py` or via an environment variable (preferred).
 
-Run: `python compresser.py -p '/path/to/directory'`
+Run: `python compressor.py -p '/path/to/directory'`
 
 Your compressed images are created in the same directory with "_tny" appended to the file name.
 
@@ -23,7 +23,7 @@ The service works with either png or jpg files.
 
 Note: Tests require the Pillow module: `pip install Pillow`
 
-Run: `python test_compresser.py`
+Run: `python test_compressor.py`
 
 ## Contact
 

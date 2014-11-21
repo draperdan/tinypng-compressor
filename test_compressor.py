@@ -3,11 +3,11 @@ import tempfile
 import shutil
 import os
 from PIL import Image
-from compresser import compress
+from compressor import compress
 import sys
 
 
-class TestCompresser(unittest.TestCase):
+class TestCompressor(unittest.TestCase):
 
     def setUp(self):
         self.origdir = os.getcwd()

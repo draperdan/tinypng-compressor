@@ -1,7 +1,8 @@
 """
 Settings
 """
+from os import environ
 
-API_KEY = "28G_EW_NRT-Dnxl3gq-4XbWwHS96MLO5"
+API_KEY = environ.get('API_KEY', '{{ api_key }}')
 
 ACCEPTED_EXTENSIONS = ['.png', '.jpg']

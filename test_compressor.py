@@ -18,7 +18,7 @@ class TestCompressor(unittest.TestCase):
         self.image.close()
         self.command_line_arg = sys.argv = ['-d', self.testdir]
 
-    def test_compresser_returns_compressed_file(self):
+    def test_compressor_returns_compressed_file(self):
         """
         Compresses mock image and matches file name against
         expected file name.
@@ -27,6 +27,13 @@ class TestCompressor(unittest.TestCase):
         compressed_file = os.listdir(self.testdir)[1]
         expected = 'test_tny.png'
         self.assertEqual(compressed_file, expected)
+
+    # def test_compressor_creates_output_dir(self):
+    #     """
+    #     Compresses mock image and places it in an output
+    #     directory.
+    #     """
+    #     pass
 
     def tearDown(self):
         os.chdir(self.origdir)

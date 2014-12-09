@@ -39,4 +39,4 @@ Run: `python test_compressor.py`
 
 ## Contact
 
-Feel free to open a pull request or contact me at patrickbeeson@gmail.com with questions.
+Feel free to open a pull request or contact me at patrick@patrickbeeson.com with questions.

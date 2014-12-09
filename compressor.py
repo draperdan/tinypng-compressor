@@ -11,9 +11,7 @@ accepted_extensions = settings.ACCEPTED_EXTENSIONS
 
 
 def compress(args):
-    """
-    Compress a directory of png/jpg images using the TinyPNG/TinyJPG service.
-    """
+    "Compress png/jpg images using the TinyPNG/TinyJPG service."
     try:
         for file in args.filenames:
             ext = os.path.splitext(file)[-1].lower()
@@ -33,19 +31,26 @@ def compress(args):
                     result = urlopen(
                         response.getheader("Location"), cafile=cafile).read()
                     if args.outpath:
-                        output = os.path.join(args.outpath, file)
+                        if os.path.isdir(args.outpath):
+                            output = os.path.join(args.outpath, file)
+                        else:
+                            os.mkdir(args.outpath)
+                            output = os.path.join(args.outpath, file)
                     else:
                         output = os.path.join(
                             args.inpath,
-                            os.path.splitext(file)[0] + '_tny' + os.path.splitext(file)[1]
+                            os.path.splitext(file)[0] + '_compressed' + os.path.splitext(file)[1]
                         )
                     open(output, "wb").write(result)
                 except HTTPError as error:
                     print('Error: {}'.format(error.reason))
     except FileNotFoundError:
-        print('The directory specified doesn\'t exist.')
+        print('The file specified doesn\'t exist.')
+        raise
 
-if __name__ == "__main__":
+
+def create_parser():
+    "Create the command line parser and args"
     parser = argparse.ArgumentParser(description='Compress files in directory')
     parser.add_argument(
         dest='filenames',
@@ -68,5 +73,14 @@ if __name__ == "__main__":
         action='store',
         help='optional path for output directory',
     )
+    return parser
+
+
+def main():
+    "Function to run parser and compress functions."
+    parser = create_parser()
     args = parser.parse_args()
     compress(args)
+
+if __name__ == "__main__":
+    main()
